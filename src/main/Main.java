@@ -1,3 +1,8 @@
+package main;
+
+import students.ClassResults;
+import students.FinalResult;
+import students.Student;
 
 public class Main {
     public static void main(String[] args) {
