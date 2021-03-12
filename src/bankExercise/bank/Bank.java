@@ -1,7 +1,9 @@
 package bankExercise.bank;
 
-public class Bank {
-    public static void Bank(){
+import java.util.ArrayList;
 
-    }
+public class Bank {
+    ArrayList<Account> accounts = new ArrayList<Account>();
+
+
 }
