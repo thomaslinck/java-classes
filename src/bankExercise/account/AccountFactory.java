@@ -1,7 +1,8 @@
-package bankExercise.bank;
+package bankExercise.account;
 
-class AccountFactory {
-    Account make(){
+public class AccountFactory {
+    Account make(AccountType accountType){
+
         Account account = new Account() {
 
             @Override

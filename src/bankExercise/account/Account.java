@@ -1,8 +1,8 @@
-package bankExercise.bank;
+package bankExercise.account;
 
 import java.util.UUID;
 
-abstract class Account {
+public abstract class Account {
     float currentAmount;
     UUID accountUUID;
 

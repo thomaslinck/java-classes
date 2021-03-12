@@ -1,4 +1,4 @@
-package bankExercise.bank;
+package bankExercise.account;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 
-enum AccountType {
+public enum AccountType {
     POUPANCA("Poupança"),
     CORRENTE("Conta Corrente");
 
