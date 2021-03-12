@@ -6,20 +6,20 @@ public abstract class Account {
     float currentAmount;
     UUID accountUUID;
 
-    Account(){
+    public Account(){
         this.accountUUID = UUID.randomUUID();
     }
 
     void deposit(float amount){
-        if (depositValidation())
+        if (depositValidation(amount))
             this.currentAmount += amount;
     }
 
     void withdraw(float amount){
-        if(withdrawValidation())
+        if(withdrawValidation(amount))
             this.currentAmount -= amount;
     }
 
-    abstract boolean depositValidation();
-    abstract boolean withdrawValidation();
+    abstract boolean depositValidation(float amountToDeposit);
+    abstract boolean withdrawValidation(float amountToDeposit);
 }

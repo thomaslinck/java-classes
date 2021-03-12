@@ -1,20 +1,16 @@
 package bankExercise.account;
 
 public class AccountFactory {
-    Account make(AccountType accountType){
+    public Account make(AccountType accountType) throws EnumConstantNotPresentException{
+        Account account;
 
-        Account account = new Account() {
+        if(accountType.equals(accountType.POUPANCA))
+            account = new Poupanca();
+        else if(accountType.equals(accountType.CORRENTE))
+            account = new ContaCorrente();
+        else
+            throw new EnumConstantNotPresentException(accountType.getClass(), accountType.toString());
 
-            @Override
-            boolean depositValidation() {
-                return false;
-            }
-
-            @Override
-            boolean withdrawValidation() {
-                return false;
-            }
-        };
         return account;
     }
 }
