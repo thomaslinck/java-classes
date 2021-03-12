@@ -8,6 +8,6 @@ class Poupanca extends Account{
 
     @Override
     boolean withdrawValidation(float amountToDeposit) {
-        return false;
+        return ((currentAmount-amountToDeposit)>=0) ? true : false;
     }
 }
