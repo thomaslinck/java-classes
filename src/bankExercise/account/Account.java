@@ -2,16 +2,14 @@ package bankExercise.account;
 
 import lombok.Getter;
 
-import java.util.UUID;
-
 public abstract class Account {
     @Getter
     protected float currentAmount;
 
-    private UUID accountUUID;
+    private final AccountInformation accountInformation;
 
-    public Account(){
-        this.accountUUID = UUID.randomUUID();
+    public Account(AccountInformation accountInformation){
+        this.accountInformation = accountInformation;
     }
 
     void deposit(float amount){
