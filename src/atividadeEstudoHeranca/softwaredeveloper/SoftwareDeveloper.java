@@ -1,24 +1,24 @@
-package atividadeEstudoHeranca.programador;
+package atividadeEstudoHeranca.softwaredeveloper;
 
-import atividadeEstudoHeranca.funcionario.Funcionario;
+import atividadeEstudoHeranca.employee.Employee;
 
-public class Programador extends Funcionario {
+public class SoftwareDeveloper extends Employee {
     private String linguagemProgramacaoPreferida;
 
-    public Programador(String nome, String codigo, String linguagemProgramacaoPreferida) {
+    public SoftwareDeveloper(String nome, String codigo, String linguagemProgramacaoPreferida) {
         super(nome, codigo);
         this.linguagemProgramacaoPreferida = linguagemProgramacaoPreferida;
     }
 
-    public Programador(String nome, String codigo) {
+    public SoftwareDeveloper(String nome, String codigo) {
         super(nome, codigo);
     }
 
-    public Programador() {
+    public SoftwareDeveloper() {
         super();
     }
 
-    public Programador(String linguagemProgramacaoPreferida) {
+    public SoftwareDeveloper(String linguagemProgramacaoPreferida) {
         this.linguagemProgramacaoPreferida = linguagemProgramacaoPreferida;
     }
 
