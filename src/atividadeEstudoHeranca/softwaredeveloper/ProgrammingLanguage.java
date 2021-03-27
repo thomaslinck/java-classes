@@ -12,5 +12,4 @@ import lombok.Setter;
 public class ProgrammingLanguage{
     private String language;
     private int experienceInYears;
-    private ProgrammingLanguagesRanking placeInRanking;
 }

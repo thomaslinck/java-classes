@@ -1,12 +1,13 @@
 package atividadeEstudoHeranca.main;
 
 import atividadeEstudoHeranca.employee.Employee;
-import atividadeEstudoHeranca.softwaredeveloper.ProgrammingLanguagesRanking;
 import atividadeEstudoHeranca.softwaredeveloper.SoftwareDeveloper;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class App {
+    private final InputDataGenerator inputDataGenerator = new InputDataGenerator();
 
     private boolean shouldContinueExecuting = true;
     private ArrayList<Employee> employees = new ArrayList<Employee>();
@@ -14,21 +15,24 @@ public class App {
     public void execute(){
 
         addEmployees();
-        //setProgrammingLanguagesToSoftwareDevelopers();
+        setProgrammingLanguagesToSoftwareDevelopers();
         printEmployeesNames();
-        //printDevelopersMainLanguages();
+        printDevelopersMainLanguages();
 
     }
 
     private void addEmployees(){
-        employees = new InputDataGenerator().generateEmployees(2);
+        employees = new InputDataGenerator().generateEmployees(5);
     }
 
     private void setProgrammingLanguagesToSoftwareDevelopers(){
-        var developer = (SoftwareDeveloper)employees.get(1);
-        developer.addProgrammingLanguageToRanking("Java", 10, ProgrammingLanguagesRanking.FIRST);
-        developer.addProgrammingLanguageToRanking("Python", 5, ProgrammingLanguagesRanking.SECOND);
-        developer.addProgrammingLanguageToRanking("Elixir", 1, ProgrammingLanguagesRanking.THIRD);
+        getDevelopersAmongEmployees().forEach(
+                developer -> {
+                    ((SoftwareDeveloper)developer).setProgrammingLanguages(
+                            inputDataGenerator.generateProgrammingLanguages()
+                    );
+                }
+        );
     }
 
     private void printEmployeesNames(){
@@ -38,24 +42,24 @@ public class App {
 
     private void printDevelopersMainLanguages(){
         System.out.println("\nOs programadores com suas respectivas linguages são:");
-        employees.
-                stream().
-                filter(
-                        employee -> employee.getClass().equals(SoftwareDeveloper.class))
+        getDevelopersAmongEmployees()
                 .forEach(
-                        employee -> {
-                            System.out.println(employee.getName() + ":");
-                            ((SoftwareDeveloper)employee).getProgrammingLanguages()
+                        developer -> {
+                            System.out.println(developer.getName() + ":");
+                            ((SoftwareDeveloper)developer).getProgrammingLanguages()
                                     .stream()
                                     .forEach(
                                             programmingLanguage ->
                                                     System.out.println(
-                                                            programmingLanguage.getPlaceInRanking().getPosition() + " - " +
-                                                                    programmingLanguage.getLanguage() + " - " +
-                                                                    programmingLanguage.getExperienceInYears()
+                                                            programmingLanguage.getLanguage() + " - " +
+                                                            programmingLanguage.getExperienceInYears()
                                                     )
                                     );
                         }
                 );
+    }
+
+    private Stream <Employee> getDevelopersAmongEmployees(){
+        return employees.stream().filter(e -> e.getClass().equals(SoftwareDeveloper.class));
     }
 }
