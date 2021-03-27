@@ -1,32 +1,21 @@
 package atividadeEstudoHeranca.softwaredeveloper;
 
 import atividadeEstudoHeranca.employee.Employee;
+import atividadeEstudoHeranca.employee.EmployeeType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class SoftwareDeveloper extends Employee {
-    private String linguagemProgramacaoPreferida;
+    private String mainLanguage;
 
-    public SoftwareDeveloper(String nome, String codigo, String linguagemProgramacaoPreferida) {
-        super(nome, codigo);
-        this.linguagemProgramacaoPreferida = linguagemProgramacaoPreferida;
-    }
-
-    public SoftwareDeveloper(String nome, String codigo) {
-        super(nome, codigo);
-    }
-
-    public SoftwareDeveloper() {
-        super();
-    }
-
-    public SoftwareDeveloper(String linguagemProgramacaoPreferida) {
-        this.linguagemProgramacaoPreferida = linguagemProgramacaoPreferida;
-    }
-
-    public String getLinguagemProgramacaoPreferida() {
-        return linguagemProgramacaoPreferida;
-    }
-
-    public void setLinguagemProgramacaoPreferida(String linguagemProgramacaoPreferida) {
-        this.linguagemProgramacaoPreferida = linguagemProgramacaoPreferida;
+    public SoftwareDeveloper(String name, String code, String mainLanguage){
+        super(name, code, EmployeeType.SOFTWARE_DEVELOPER);
+        this.mainLanguage = mainLanguage;
     }
 }
