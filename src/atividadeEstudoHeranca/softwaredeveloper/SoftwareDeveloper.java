@@ -14,15 +14,4 @@ public class SoftwareDeveloper extends Employee {
     public SoftwareDeveloper(String name, String code){
         super(name, code);
     }
-
-    public void addProgrammingLanguageToRanking(
-            String language, int experienceInYears, ProgrammingLanguagesRanking placeInRanking){
-
-        programmingLanguages.add(
-                placeInRanking.getPosition(),
-                new ProgrammingLanguage(language, experienceInYears, placeInRanking)
-        );
-
-    }
-
 }

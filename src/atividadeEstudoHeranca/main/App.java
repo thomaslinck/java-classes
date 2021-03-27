@@ -18,6 +18,8 @@ public class App {
         setProgrammingLanguagesToSoftwareDevelopers();
         printEmployeesNames();
         printDevelopersMainLanguages();
+        
+        //TODO: compareDevelopers(); using SoftwareDevelopersComparator class
 
     }
 
