@@ -1,30 +1,46 @@
 package atividadeEstudoHeranca;
 
 import atividadeEstudoHeranca.employee.Employee;
+import atividadeEstudoHeranca.employee.EmployeeFactory;
 import atividadeEstudoHeranca.employee.EmployeeType;
+import atividadeEstudoHeranca.softwaredeveloper.ProgrammingLanguagesRanking;
 import atividadeEstudoHeranca.softwaredeveloper.SoftwareDeveloper;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-    private boolean shouldContinueExecuting = true;
     private final Scanner scanner = new Scanner(System.in);
+    private final EmployeeFactory employeeFactory = new EmployeeFactory();
+
+    private boolean shouldContinueExecuting = true;
     private ArrayList<Employee> employees = new ArrayList<Employee>();
 
     public void execute(){
 
-        employees.add(
-                new Employee("José", "001", EmployeeType.REGULAR_EMPLOYEE)
-        );
-        employees.add(
-                new SoftwareDeveloper("Fabricio", "002","Python")
-        );
-
+        addEmployees();
+        setProgrammingLanguagesToSoftwareDevelopers();
         printEmployeesNames();
         printDevelopersMainLanguages();
 
-        //TODO: exercise 2 and 3
+    }
+
+    private void addEmployees(){
+        employees.add(
+                0,
+                employeeFactory.make("José", "001", EmployeeType.REGULAR_EMPLOYEE)
+        );
+        employees.add(
+                1,
+                employeeFactory.make("Fabricio", "002", EmployeeType.SOFTWARE_DEVELOPER)
+        );
+    }
+
+    private void setProgrammingLanguagesToSoftwareDevelopers(){
+        var developer = (SoftwareDeveloper)employees.get(1);
+        developer.addProgrammingLanguageToRanking("Java", 10, ProgrammingLanguagesRanking.FIRST);
+        developer.addProgrammingLanguageToRanking("Python", 5, ProgrammingLanguagesRanking.SECOND);
+        developer.addProgrammingLanguageToRanking("Elixir", 1, ProgrammingLanguagesRanking.THIRD);
     }
 
     private void printEmployeesNames(){
@@ -37,9 +53,21 @@ public class App {
         employees.
                 stream().
                 filter(
-                        employee -> employee.getEmployeeType().equals(EmployeeType.SOFTWARE_DEVELOPER))
+                        employee -> employee.getClass().equals(SoftwareDeveloper.class))
                 .forEach(
-                        employee ->
-                            System.out.println( employee.getName() + " - " + ((SoftwareDeveloper)employee).getMainLanguage()));
+                        employee -> {
+                            System.out.println(employee.getName() + ":");
+                            ((SoftwareDeveloper)employee).getProgrammingLanguages()
+                                    .stream()
+                                    .forEach(
+                                            programmingLanguage ->
+                                                    System.out.println(
+                                                            programmingLanguage.getPlaceInRanking().getPosition() + " - " +
+                                                                    programmingLanguage.getLanguage() + " - " +
+                                                                    programmingLanguage.getExperienceInYears()
+                                                    )
+                                    );
+                        }
+                );
     }
 }

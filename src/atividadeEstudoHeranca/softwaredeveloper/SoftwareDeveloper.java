@@ -1,21 +1,26 @@
 package atividadeEstudoHeranca.softwaredeveloper;
 
 import atividadeEstudoHeranca.employee.Employee;
-import atividadeEstudoHeranca.employee.EmployeeType;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
+import java.util.ArrayList;
+
 @Getter
-@Setter
 public class SoftwareDeveloper extends Employee {
-    private String mainLanguage;
+    private ArrayList<ProgrammingLanguage> programmingLanguages = new ArrayList<ProgrammingLanguage>();
 
-    public SoftwareDeveloper(String name, String code, String mainLanguage){
-        super(name, code, EmployeeType.SOFTWARE_DEVELOPER);
-        this.mainLanguage = mainLanguage;
+    public SoftwareDeveloper(String name, String code){
+        super(name, code);
     }
+
+    public void addProgrammingLanguageToRanking(
+            String language, int experienceInYears, ProgrammingLanguagesRanking placeInRanking){
+
+        programmingLanguages.add(
+                placeInRanking.getPosition(),
+                new ProgrammingLanguage(language, experienceInYears, placeInRanking)
+        );
+
+    }
+
 }

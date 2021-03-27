@@ -11,9 +11,7 @@ import lombok.Setter;
 @Setter
 
 public class Employee {
-
     private String name;
     private String code;
-    private EmployeeType employeeType;
 
 }
