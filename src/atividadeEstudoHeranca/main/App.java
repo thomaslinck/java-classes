@@ -1,17 +1,12 @@
-package atividadeEstudoHeranca;
+package atividadeEstudoHeranca.main;
 
 import atividadeEstudoHeranca.employee.Employee;
-import atividadeEstudoHeranca.employee.EmployeeFactory;
-import atividadeEstudoHeranca.employee.EmployeeType;
 import atividadeEstudoHeranca.softwaredeveloper.ProgrammingLanguagesRanking;
 import atividadeEstudoHeranca.softwaredeveloper.SoftwareDeveloper;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class App {
-    private final Scanner scanner = new Scanner(System.in);
-    private final EmployeeFactory employeeFactory = new EmployeeFactory();
 
     private boolean shouldContinueExecuting = true;
     private ArrayList<Employee> employees = new ArrayList<Employee>();
@@ -19,21 +14,14 @@ public class App {
     public void execute(){
 
         addEmployees();
-        setProgrammingLanguagesToSoftwareDevelopers();
+        //setProgrammingLanguagesToSoftwareDevelopers();
         printEmployeesNames();
-        printDevelopersMainLanguages();
+        //printDevelopersMainLanguages();
 
     }
 
     private void addEmployees(){
-        employees.add(
-                0,
-                employeeFactory.make("José", "001", EmployeeType.REGULAR_EMPLOYEE)
-        );
-        employees.add(
-                1,
-                employeeFactory.make("Fabricio", "002", EmployeeType.SOFTWARE_DEVELOPER)
-        );
+        employees = new InputDataGenerator().generateEmployees(2);
     }
 
     private void setProgrammingLanguagesToSoftwareDevelopers(){
