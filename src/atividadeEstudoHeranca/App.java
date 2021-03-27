@@ -23,6 +23,8 @@ public class App {
 
         printEmployeesNames();
         printDevelopersMainLanguages();
+
+        //TODO: exercise 2 and 3
     }
 
     private void printEmployeesNames(){
