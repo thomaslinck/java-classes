@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="atividadeEstudoHeranca" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="atividadeEstudoHeranca.main.Main" />
+    <module name="programacao-1" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
